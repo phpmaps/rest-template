@@ -1,0 +1,59 @@
+<html>
+<head><title>Form</title>
+    <link rel="stylesheet" type="text/css" href="./contact-signup.css">
+</head>
+<body>
+    <button id="run" class="run">Run</button>
+    <div class="blury"></div>
+    <article class="slidy hidden">
+        <div class="flex-form">
+            <div class="flex-form-inner">
+                <div class="close-container">
+                    <button class="close-button">X</button>
+                </div>
+                <p class="flex-item">Happy day. Join our roster for a 20% discount.</p>
+                <form class="flex-item" action="" method="post">
+                    <div class="label-input">
+                        <label>Email Address</label>
+                        <div class="input">
+                            <input type="email" value="" placeholder="Your email address">
+                        </div>
+                    </div>
+                    <input class="button flex-item" type="submit" value="Subscribe">
+                </form>
+            </div>
+        </div>
+    </article>
+
+    <script>
+        var btn = document.getElementById("run");
+
+        var slidy = document.getElementsByClassName("slidy")[0];
+        var flexForm = document.getElementsByClassName("flex-form")[0];
+        var sliderClose = document.getElementsByClassName("close-button")[0];
+        var blury = document.getElementsByClassName("blury")[0];
+        btn.onclick = function () {
+            if (slidy.classList.contains('slide-in')) {
+                blury.style.display = "none";
+                slidy.classList.replace('slide-in', 'slide-out')
+            } else if (slidy.classList.contains('slide-out')) {
+                blury.style.display = "block";
+                slidy.classList.replace('slide-out', 'slide-in')
+            } else if (slidy.classList.contains('hidden')) {
+                blury.style.display = "block";
+                slidy.classList.replace('hidden', 'slide-in')
+            }
+        }
+        sliderClose.onclick = function () {
+            slidy.classList.replace('slide-in', 'hidden')
+            blury.style.display = "none";
+        }
+        window.onclick = function (event) {
+            if (event.target == flexForm) {
+                slidy.classList.replace('slide-in', 'hidden')
+                blury.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
