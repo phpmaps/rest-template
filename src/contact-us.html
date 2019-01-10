@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cold Blooded Customs | Contact</title>
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Hind+Vadodara:400,700|Mukta:500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nosifer|Noto+Sans+TC:700" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <script>
+
+        window.onload = function () {
+            var submitContact = document.getElementById("submit_contact");
+            var result = document.getElementById("result");
+
+            submitContact.addEventListener("click", function (e) {
+                e.preventDefault();
+                var contact = {};
+                contact.customer = document.getElementById("customer_contact").value;
+                contact.company = document.getElementById("company_contact").value;
+                contact.phone = document.getElementById("phone_contact").value;
+                contact.email = document.getElementById("email_contact").value;
+                contact.message = document.getElementById("message_contact").value;
+                send(contact);
+                result.innerHTML = "<p>Thank you for contacting Cold Blooded Customs.  You will get an email from us soon!</p>";
+                return false;
+            }, false);
+
+            function send(contact) {
+                var http = new XMLHttpRequest();
+                var url = '/forms/contact-us';
+                http.open('POST', url, true);
+                http.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+                http.onreadystatechange = function () {
+                    if (http.readyState == 4 && http.status == 200) {
+                        //alert(http.responseText);
+                    }
+                }
+                http.send(JSON.stringify(contact));
+            }
+        }
+
+
+    </script>
+    <style>
+
+            .submit-btn {
+        position: relative;
+float: right;
+clear: none;
+display: block;
+margin-top: 8px;
+margin-bottom: 8px;
+    }
+
+.form {
+position: relative;
+margin-bottom: 14px;
+}
+.wall {
+display: block;
+height: 100%;
+width: 100%;
+}
+
+.formContainer {
+padding-right: 40px;
+padding-left: 40px;
+}
+
+
+.formContainer input[type=text],
+select,
+textarea {
+width: 100%;
+padding: 12px;
+border: 1px solid #ccc;
+border-radius: 4px;
+box-sizing: border-box;
+resize: vertical;
+}
+
+/* Style the label to display next to the inputs */
+
+.formContainer label {
+padding: 12px 12px 12px 0;
+display: block;
+}
+
+/* Floating column for labels: 25% width */
+
+.col-25 {
+float: left;
+width: 25%;
+margin-top: 6px;
+}
+
+/* Floating column for inputs: 75% width */
+
+.col-75 {
+float: left;
+width: 75%;
+margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+
+
+    .row:after {
+content: "";
+display: table;
+clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+
+@media screen and (max-width: 600px) {
+.col-25,
+.col-75 {
+width: 100%;
+margin-top: 0;
+}
+}
+    </style>
+
+</head>
+
+<body class="is-boxed has-animations">
+    <div class="body-wrap boxed-container">
+        <header class="site-header" style="background-color: #FFFF66">
+            <div class="container">
+                <div class="site-header-inner">
+                    <div class="brand header-brand">
+                        <h1 class="m-0 logo-title">
+                            <a href="/" class="logo-link">
+                                <img src="../images/crocodile.svg" class="logo-image" />
+                                Cold Blooded Customs - What do you need built?
+                            </a>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main style="background-color: #FFFF66">
+            <section style="background-color: #FFFF66">
+                <div class="container">
+                    <div class="inner">
+                        <div class="form">
+                            <div class="wall">
+
+                                <div id="result" class="formContainer">
+
+                                    <div class="row">
+                                        <div class="col-25">
+                                            <label for="customer_contact">Full Name</label>
+                                        </div>
+                                        <div class="col-75">
+                                            <input type="text" id="customer_contact">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-25">
+                                            <label for="company_contact">Company Name </label>
+                                        </div>
+                                        <div class="col-75">
+                                            <input type="text" id="company_contact">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-25">
+                                            <label for="phone_contact">Phone </label>
+                                        </div>
+                                        <div class="col-75">
+                                            <input type="text" id="phone_contact">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-25">
+                                            <label for="email_contact">Email </label>
+                                        </div>
+                                        <div class="col-75">
+                                            <input type="text" id="email_contact">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-25">
+                                            <label for="message_contact">Tell us what you need?</label>
+                                        </div>
+                                        <div class="col-75">
+                                            <textarea id="message_contact" style="height:200px"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="submit-btn">
+
+                                        <a class="button button-primary button-shadow" id="submit_contact">Submit</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer text-light">
+            <div class="container">
+                <div class="site-footer-inner has-top-divider">
+                    <div class="brand footer-brand">
+                        <a href="#">
+                            <img src="../images/crocodile-lines.svg" class="logo-image" />
+                        </a>
+                    </div>
+                    <br>
+                    <div><span class="footer-logo-title">&copy; 2018 Cold Blooded Customs, LLC</span></div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
